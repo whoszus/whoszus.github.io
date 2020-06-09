@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Mysql触发器 触发器简介 : 触发器(Trigger)是一个特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件触发。触发器经常用于加强数据的完整性约束和业务规则等。 本次新建触发器背景：有两个数据表 A|B，A是在另外的系统中同步过来的，表中数据每3分钟会在更新一次。B是在本系统内使用的，由前端调用接口将A表中某一条数据导入到B表中。那么，在此时刻之后，A表中如数据有更新，AB">
+<meta name="description" content="Mysql触发器# 触发器简介 : 触发器(Trigger)是一个特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件触发。触发器经常用于加强数据的完整性约束和业务规则等。 本次新建触发器背景：有两个数据表 A|B，A是在另外的系统中同步过来的，表中数据每3分钟会在更新一次。B是在本系统内使用的，由前端调用接口将A表中某一条数据导入到B表中。那么，在此时刻之后，A表中如数据有更新，A">
 <meta name="keywords" content="Mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql触发器简介与语法">
 <meta property="og:url" content="http://whosuz.gtihub.io/2018/08/21/Mysql触发器  一次应用与语法详解/index.html">
 <meta property="og:site_name" content="One2Zero">
-<meta property="og:description" content="Mysql触发器 触发器简介 : 触发器(Trigger)是一个特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件触发。触发器经常用于加强数据的完整性约束和业务规则等。 本次新建触发器背景：有两个数据表 A|B，A是在另外的系统中同步过来的，表中数据每3分钟会在更新一次。B是在本系统内使用的，由前端调用接口将A表中某一条数据导入到B表中。那么，在此时刻之后，A表中如数据有更新，AB">
+<meta property="og:description" content="Mysql触发器# 触发器简介 : 触发器(Trigger)是一个特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件触发。触发器经常用于加强数据的完整性约束和业务规则等。 本次新建触发器背景：有两个数据表 A|B，A是在另外的系统中同步过来的，表中数据每3分钟会在更新一次。B是在本系统内使用的，由前端调用接口将A表中某一条数据导入到B表中。那么，在此时刻之后，A表中如数据有更新，A">
 <meta property="og:locale" content="default">
 <meta property="og:updated_time" content="2019-05-29T03:11:18.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql触发器简介与语法">
-<meta name="twitter:description" content="Mysql触发器 触发器简介 : 触发器(Trigger)是一个特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件触发。触发器经常用于加强数据的完整性约束和业务规则等。 本次新建触发器背景：有两个数据表 A|B，A是在另外的系统中同步过来的，表中数据每3分钟会在更新一次。B是在本系统内使用的，由前端调用接口将A表中某一条数据导入到B表中。那么，在此时刻之后，A表中如数据有更新，AB">
+<meta name="twitter:description" content="Mysql触发器# 触发器简介 : 触发器(Trigger)是一个特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件触发。触发器经常用于加强数据的完整性约束和业务规则等。 本次新建触发器背景：有两个数据表 A|B，A是在另外的系统中同步过来的，表中数据每3分钟会在更新一次。B是在本系统内使用的，由前端调用接口将A表中某一条数据导入到B表中。那么，在此时刻之后，A表中如数据有更新，A">
 
 
 
@@ -300,18 +300,18 @@
       
 
       
-        <h2 id="Mysql触发器"><a href="#Mysql触发器" class="headerlink" title="Mysql触发器"></a>Mysql触发器</h2><ul>
+        <h2><span id="mysql-hong-fa-qi">Mysql触发器</span><a href="#mysql-hong-fa-qi" class="header-anchor">#</a></h2><ul>
 <li>触发器简介 : 触发器(Trigger)是一个特殊的存储过程，它的执行不是由程序调用，也不是手工启动，而是由事件触发。<br>触发器经常用于加强数据的完整性约束和业务规则等。</li>
 <li>本次新建触发器背景：有两个数据表 A|B，A是在另外的系统中同步过来的，表中数据每3分钟会在更新一次。B是在本系统内使用的，由前端调用接口将A表中某一条数据导入到B表中。那么，在此时刻之后，A表中如数据有更新，AB两表数据便不一致了。数据以A表为准，所以，使用触发器是一个方案。下面展示如何新建这一个触发器。</li>
 </ul>
 <hr>
-<h3 id="1-触发器语法"><a href="#1-触发器语法" class="headerlink" title="1. 触发器语法"></a>1. 触发器语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1. 新建触发器</span><br><span class="line">CREATE TRIGGER 触发器名称 BEFORE|AFTER 触发事件</span><br><span class="line">  ON 表名 FOR EACH ROW</span><br><span class="line">  BEGIN</span><br><span class="line">    触发器程序体</span><br><span class="line">  END</span><br><span class="line"></span><br><span class="line">&#123;BEFORE|AFTER&#125; 触发器触发的时机</span><br><span class="line">&#123;INSERT|UPDATE|DELETE&#125; 触发器事件</span><br><span class="line">FOR EACH ROW 子句通知触发器每隔一行执行一次动作，而不是对整个表执行一次。针对insert和delete语句，每一行都触发)</span><br><span class="line"></span><br><span class="line">2. 查看触发器</span><br><span class="line">show triggers\G</span><br><span class="line"></span><br><span class="line">3. 删除</span><br><span class="line">drop trigger 触发器名称</span><br></pre></td></tr></table></figure>
+<h3><span id="1-hong-fa-qi-yu-fa">1. 触发器语法</span><a href="#1-hong-fa-qi-yu-fa" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1. 新建触发器</span><br><span class="line">CREATE TRIGGER 触发器名称 BEFORE|AFTER 触发事件</span><br><span class="line">  ON 表名 FOR EACH ROW</span><br><span class="line">  BEGIN</span><br><span class="line">    触发器程序体</span><br><span class="line">  END</span><br><span class="line"></span><br><span class="line">&#123;BEFORE|AFTER&#125; 触发器触发的时机</span><br><span class="line">&#123;INSERT|UPDATE|DELETE&#125; 触发器事件</span><br><span class="line">FOR EACH ROW 子句通知触发器每隔一行执行一次动作，而不是对整个表执行一次。针对insert和delete语句，每一行都触发)</span><br><span class="line"></span><br><span class="line">2. 查看触发器</span><br><span class="line">show triggers\G</span><br><span class="line"></span><br><span class="line">3. 删除</span><br><span class="line">drop trigger 触发器名称</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="2-触发器中-new-amp-amp-old"><a href="#2-触发器中-new-amp-amp-old" class="headerlink" title="2. 触发器中 new &amp;&amp; old"></a>2. 触发器中 new &amp;&amp; old</h3><p>   2.1 针对update操作，new表示的是更新后的值，old表示的是原来的数据。</p>
+<h3><span id="2-hong-fa-qi-zhong-new-amp-amp-old">2. 触发器中 new &amp;&amp; old</span><a href="#2-hong-fa-qi-zhong-new-amp-amp-old" class="header-anchor">#</a></h3><p>   2.1 针对update操作，new表示的是更新后的值，old表示的是原来的数据。</p>
 <p>   2.2 针对insert操作，new表示的是插入的值。</p>
 <p>   2.3 针对delete操作，old表示的是删除后的值。</p>
 <hr>
-<h3 id="3-示例"><a href="#3-示例" class="headerlink" title="3. 示例"></a>3. 示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER ;;</span><br><span class="line">CREATE TRIGGER `case_update_to_case2` AFTER UPDATE ON `jz_case_detail` FOR EACH ROW BEGIN</span><br><span class="line">      UPDATE case2_baseinfo SET lasj = new.SL_LRSJ ,belongTo = new.DEPARTMENTCODE, caseName= new.AJMC,caseClass=new.AJLX,case_status = new.AJSTATE,masterSN = new.AJZBRY,masterName=new.RESERVATION01,assist_masterSN=new.AJXBRY,assist_masterName=new.RESERVATION02,introduction=new.ZYAQ where caseID = new.AJBH;</span><br><span class="line">END</span><br><span class="line">;;</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
+<h3><span id="3-shi-li">3. 示例</span><a href="#3-shi-li" class="header-anchor">#</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER ;;</span><br><span class="line">CREATE TRIGGER `case_update_to_case2` AFTER UPDATE ON `jz_case_detail` FOR EACH ROW BEGIN</span><br><span class="line">      UPDATE case2_baseinfo SET lasj = new.SL_LRSJ ,belongTo = new.DEPARTMENTCODE, caseName= new.AJMC,caseClass=new.AJLX,case_status = new.AJSTATE,masterSN = new.AJZBRY,masterName=new.RESERVATION01,assist_masterSN=new.AJXBRY,assist_masterName=new.RESERVATION02,introduction=new.ZYAQ where caseID = new.AJBH;</span><br><span class="line">END</span><br><span class="line">;;</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -427,7 +427,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -473,7 +473,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql触发器"><span class="nav-number">1.</span> <span class="nav-text">Mysql触发器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-触发器语法"><span class="nav-number">1.1.</span> <span class="nav-text">1. 触发器语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-触发器中-new-amp-amp-old"><span class="nav-number">1.2.</span> <span class="nav-text">2. 触发器中 new &amp;&amp; old</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-示例"><span class="nav-number">1.3.</span> <span class="nav-text">3. 示例</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Mysql触发器#</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">1. 触发器语法#</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">2. 触发器中 new &amp;&amp; old#</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">3. 示例#</span></a></li></ol></li></ol></div>
             
 
           </div>
