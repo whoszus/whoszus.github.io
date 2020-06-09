@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="survey,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="关于脊柱侧弯的调研   TOC{:toc}​    目前从事的研究工作中涉及图形图像的内容比较少。经过一段时间的思考和调查，如果要在数字图像领域做一些工作的话，基于图像的骨骼畸形、肌肉畸形的辅助诊断会是我考虑选择的方向。">
+<meta name="keywords" content="survey">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图像处理-脊柱侧弯检测任务">
+<meta property="og:url" content="http://whosuz.gtihub.io/2020/05/08/脊柱侧弯/index.html">
+<meta property="og:site_name" content="One2Zero">
+<meta property="og:description" content="关于脊柱侧弯的调研   TOC{:toc}​    目前从事的研究工作中涉及图形图像的内容比较少。经过一段时间的思考和调查，如果要在数字图像领域做一些工作的话，基于图像的骨骼畸形、肌肉畸形的辅助诊断会是我考虑选择的方向。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-13fedbfb6befb6f17155b7fa66a62179_1200x500.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-3f208e59f6ea0a10707fe12ba5d1e715_720w.png">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-afde435ae47431e4277f28e74bc6437a_720w.png">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1geq1qs4x8rj30il0iwdqc.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1geq290pfuuj30cb0betao.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1geq2bfjluij309x0ai0wd.jpg">
+<meta property="og:image" content="https://ars.els-cdn.com/content/image/1-s2.0-S1361841519300775-gr3.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1geq2myj89sj30g30jj0z9.jpg">
+<meta property="og:updated_time" content="2020-06-09T08:24:21.494Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图像处理-脊柱侧弯检测任务">
+<meta name="twitter:description" content="关于脊柱侧弯的调研   TOC{:toc}​    目前从事的研究工作中涉及图形图像的内容比较少。经过一段时间的思考和调查，如果要在数字图像领域做一些工作的话，基于图像的骨骼畸形、肌肉畸形的辅助诊断会是我考虑选择的方向。">
+<meta name="twitter:image" content="https://pic2.zhimg.com/v2-13fedbfb6befb6f17155b7fa66a62179_1200x500.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://whosuz.gtihub.io/2020/05/08/脊柱侧弯/">
+
+
+
+
+
+  <title>图像处理-脊柱侧弯检测任务 | One2Zero</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">One2Zero</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The greatest discovery of our generation is that human beings can alter their lives by altering their attitudes of mind.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://whosuz.gtihub.io/2020/05/08/脊柱侧弯/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tinker">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="One2Zero">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">图像处理-脊柱侧弯检测任务</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-08T00:00:00+08:00">
+                2020-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p> 关于脊柱侧弯的调研</p>
+</blockquote>
+<ul>
+<li>TOC<br>{:toc}<br>​    目前从事的研究工作中涉及图形图像的内容比较少。经过一段时间的思考和调查，如果要在数字图像领域做一些工作的话，基于图像的骨骼畸形、肌肉畸形的辅助诊断会是我考虑选择的方向。</li>
+</ul>
+<a id="more"></a>
+<p><img src="https://pic2.zhimg.com/v2-13fedbfb6befb6f17155b7fa66a62179_1200x500.jpg" alt="脊柱侧弯危害大，千万不要放任它！"></p>
+<p>​                                                                            图1：脊柱侧弯示意图</p>
+<p>​    骨骼畸形，例如脊柱侧弯、骨盆不正等在前期是比较难以发现的，如图1所示，左边是正常的脊柱而右边是一个发生了侧弯的脊柱示意图。在青少年时期由于不良的运动方式和日常行为（坐姿、睡姿和行走等）可能引起早起的症状。然而，轻微的症状很难引起重视，出现症状之后又非常难以康复。并且，还会导致非常多的危害，如下所示：</p>
+<pre><code>1. **影响脊柱外形和功能： **脊柱侧弯导致脊柱变形、肩背部不平、胸廓畸形、骨盆倾斜、长短腿、姿势不良等异常形态，同时影响活动度等功能。
+ 2. **影响生理健康**：脊柱变形易导致肩背部、腰部顽固性疼痛，严重者甚至出现神经受损、神经受压、肢体感觉障碍、下肢麻木、大小便异常等症状。
+ 3. **影响心肺功能**：早发性脊柱侧弯患者的尸检结果表明，其肺泡数量低于正常人，肺泡过度充气或萎缩，累积肺叶或全肺，肺动脉直径也远低于同龄人。脊柱侧弯患者胸腔容积减小，吸气相和呼气相胸廓容积均低于正常对照组。脊柱侧弯影响气体交换，包括局部通气、血流、通气血流比、弥散等。易发短气、喘气等呼吸障碍，且影响血液循环。
+ 4. **影响胃肠系统**：脊柱侧弯使腹腔容积减小、脊柱神经对内脏的调节功能紊乱，进而引起食欲不振、消化不良等胃肠系统反应。
+</code></pre><h4><span id="mu-qian-de-zhen-duan-fang-shi"><strong>目前的诊断方式：</strong></span><a href="#mu-qian-de-zhen-duan-fang-shi" class="header-anchor">#</a></h4><ol>
+<li><p><strong>根据脊突线判断</strong>：患者自然站立并弯腰90度，检查者用拇指和示指在患者脊突上从上至下快速准确地压划，受压出发红，可见一条连续的脊突线。可根据该线大致判断是否侧凸、侧凸部位、侧凸方向。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-3f208e59f6ea0a10707fe12ba5d1e715_720w.png" alt="img"></p>
+<p>​                                                                        图2： 根据脊突线判断</p>
+</li>
+<li><p><strong>根据形态改变判断</strong>：脊柱侧弯早期表现有脊柱偏离中线，高低肩，肩胛骨高低不一，一侧胸部出现皱褶皮纹等。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-afde435ae47431e4277f28e74bc6437a_720w.png" alt="img"></p>
+<p>​                                                                            图3：根据形态改变判断</p>
+</li>
+<li><p><strong>根据影像学证据判断</strong>：一般借助X片就可以区别侧凸的原因、分类、弯度、部位、旋转、骨龄、代偿度等。CT扫描和MRI则可做更近一步的显示。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geq1qs4x8rj30il0iwdqc.jpg" alt="image-20200512224217321" style="zoom:33%;"></p>
+<p>​                                                                    图4： X光下的脊柱侧弯</p>
+</li>
+</ol>
+<h4><span id="ji-yu-tu-xing-tu-xiang-de-yan-jiu-xian-zhuang">基于图形图像的研究现状</span><a href="#ji-yu-tu-xing-tu-xiang-de-yan-jiu-xian-zhuang" class="header-anchor">#</a></h4><p>​    已经有研究提出了基于激光三维点云，通过固定激光点的位置获取形态数据的方法做了脊柱侧弯检测的方法，但由于设备价格高、测试时需要到专门的场地、对不同身高的测试者需要调整激光位置等不理因素，并没有取得很好的成果。同时，由于数字图像的研究已经较为可靠，已经有研究从上述的三个诊断手段提出了基于图像的研究。</p>
+<ol>
+<li><p>莫尔条纹筛查系统用于对患者的脊椎进行医学检查。该设备用于捕获波纹图像，以基于波纹图像中的波纹图案的对称度来筛选脊柱畸形。之所以使用云纹系统，是因为如果不加以治疗，青春期特发性脊柱侧弯（AIS）可能会导致严重的健康问题。因此，由于监视和早期检测对于防止此问题至关重要。此外，机器学习中的图像识别，尤其是卷积神经网络（CNN），在过去几年中取得了令人瞩目的成就。 [3-4]</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geq290pfuuj30cb0betao.jpg" alt="image-20200512225948732"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1geq2bfjluij309x0ai0wd.jpg" alt="image-20200512230207529"></p>
+</li>
+</ol>
+<p>​                                                                        图5：利用CNN，基于莫尔条纹进行检查</p>
+<ol start="2">
+<li>利用脊柱前后X射线CT成像是一种非常有效果的诊断工具，可帮助诊断和阐明青少年特发性脊柱侧凸（AIS）评估。[14]提出了一种从X射线CT图像进行AIS评估的自动检测方法。同时，[5] 提出了一种新颖的多视图关联网络（MVC-Net）体系结构，该体系结构可以为多视图（AP和LAT）X射线中的脊柱弯曲估计提供全自动的端到端框架。拟议的MVC-Net使用我们新设计的多视图卷积层来合并多视图X射线的联合特征，从而允许网络通过利用两个视图的结构依赖性来减轻遮挡问题。</li>
+</ol>
+<p><img src="https://ars.els-cdn.com/content/image/1-s2.0-S1361841519300775-gr3.jpg" alt="Related image"></p>
+<ol start="3">
+<li>深度学习算法的应用具有减少脊柱侧弯筛查中不必要的转诊和成本的潜力。[7] 开发并验证了深度学习算法，该算法可使用裸露的背部图像进行自动脊柱侧弯检查。该算法的准确性在检测脊柱侧弯，检测曲线≥20°的病例以及对二元分类和四分类的严重性分级方面优于人类专家。计算机视觉由于其在图像信息提取中的良好性能而被公认为是一种有前景的医学图像识别方法[8-10]。通过计算机视觉已经完成了许多任务，包括对眼部疾病的自动分类[11]，识别遗传性疾病的面部表型[12]以及根据眼底图像预测心血管危险因素[13]。当人类筛选者评估外观特征以检测脊柱侧弯时，计算机视觉也可以识别这些特征。在这里，[7]使用裸露的背面图像，开发了深度学习算法，并验证了它们在脊柱侧弯的检测和严重度分级中的可行性和有效性。</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geq2myj89sj30g30jj0z9.jpg" alt="image-20200512231312189"></p>
+<p>​                                                图6： 利用深度学习，使用裸露背部的照片进行诊断</p>
+<h4><span id="can-kao-wen-xian">参考文献：</span><a href="#can-kao-wen-xian" class="header-anchor">#</a></h4><p>[1] 谢思源，史衍.《青少年特发性脊柱侧弯的危害与运动康复方法简析》.[J].中青少年体育.2014，12（6）：126-127.</p>
+<p>[2] 郭险峰等.《悬吊训练对成人特发性脊柱侧弯腰背疼痛的康复效果》.[J].中国康复理论与实践.2010，16（8）：352-352.</p>
+<p>[3] M. Batouche: “A Knowledge Based System for Diagnosing Spinal Deformations: Moire Pattern Analysis and Interpretation”, in Proc. of the 11th International Conference on Pattern Recognition, pp.591-594 (1992).</p>
+<p>[4] CHOI, R., WATANABE, K., JINGUJI, H., FUJITA, N., OGURA, Y., DEMURA, S., KOTANI, T., WADA, K., MIYAZAKI, M., SHIGEMATSU, H. and AOI, Y., 2017. CNN-based spine and Cobb angle estimator using moire images. <em>IIEEJ Transactions on Image Electronics and Visual Computing</em>, <em>5</em>(2), pp.135-144.</p>
+<p>[5] Wu, Hongbo, et al. “Automated comprehensive adolescent idiopathic scoliosis assessment using MVC-Net.” <em>Medical image analysis</em> 48 (2018): 1-11.</p>
+<p>[6] Yang, J., Zhang, K., Fan, H. <em>et al.</em> Development and validation of deep learning algorithms for scoliosis screening using back images.<em>Commun Biol</em> <strong>2,</strong> 390 (2019).</p>
+<p>[7] Deng, J. et al. in <em>IEEE Conference on</em> <em>Computer Vision and Pattern Recognition</em> <em>CVPR 2009</em>. 248–255 (2009).</p>
+<p>[8] Campanella, G. et al. Clinical-grade computational pathology using weakly supervised deep learning on whole slide images. (2019).</p>
+<p>[9] Yeung, S., Downing, N. L., Fei-Fei, L. &amp; Milstein, A. Bedside computer vision-moving artificial intelligence from driver assistance to patient safety. <em>New Engl. J. Med.</em> <strong>378</strong>, 1271 (2018).</p>
+<p>[10] Kather, J. N. et al. Deep learning can predict microsatellite instability directly from histology in gastrointestinal cancer. <em>Nat. Med.</em> <strong>25</strong>, 1054–1056 (2019).</p>
+<p>[11] Ting, D. S. W. et al. Development and validation of a deep learning system for diabetic retinopathy and related eye diseases using retinal images from multiethnic populations with diabetes. <em>Jama**</em>318**, 2211–2223 (2017).</p>
+<p>[12] Gurovich, Y. et al. Identifying facial phenotypes of genetic disorders using deep learning. <em>Nat. Med.</em> <strong>25</strong>, 60 (2019).</p>
+<p>[13] Poplin, R. et al. Prediction of cardiovascular risk factors from retinal fundus photographs via deep learning. <em>Nat. Biomed. Eng.</em> <strong>2</strong>, 158 (2018).</p>
+<p>[14] Zhong Z., Li J., Zhang Z., Jiao Z., Gao X. (2020) A Coarse-to-Fine Deep Heatmap Regression Method for Adolescent Idiopathic Scoliosis Assessment. In: Cai Y., Wang L., Audette M., Zheng G., Li S. (eds) Computational Methods and Clinical Applications for Spine Imaging. CSI 2019. Lecture Notes in Computer Science, vol 11963. Springer, Cham</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/survey/" rel="tag"># survey</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/29/2019-05-29-怎样学习才高效/" rel="next" title="怎样学习才高效">
+                <i class="fa fa-chevron-left"></i> 怎样学习才高效
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/08/MPI/" rel="prev" title="MPI 现状分析总结">
+                MPI 现状分析总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Tinker</p>
+              <p class="site-description motion-element" itemprop="description">As you think, so shall you be.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">目前的诊断方式：#</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">基于图形图像的研究现状#</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">参考文献：#</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tinker</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

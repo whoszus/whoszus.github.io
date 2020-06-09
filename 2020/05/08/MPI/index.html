@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang>
+<html class="theme-next mist use-motion" lang>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="survey,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="##MPI 在程序中，不同的进程需要相互的数据交换，特别是在科学计算中，需要大规模的计算与数据交换，集群可以很好解决单节点计算力不足的问题，但在集群中大规模的数据交换是很耗费时间的，因此需要一种在多节点的情况下能快速进行数据交流的标准，这就是MPI。 mpi 只是一个网络传输接口，和 tensorflow, mxnet, spark 都不是一个层面的技术。换句话说，mpi 的对比对象应该是 zmq">
-<meta name="keywords" content="Python Java Mysql MechineLearning......">
+<meta name="description" content="在程序中，不同的进程需要相互的数据交换，特别是在科学计算中，需要大规模的计算与数据交换，集群可以很好解决单节点计算力不足的问题，但在集群中大规模的数据交换是很耗费时间的，因此需要一种在多节点的情况下能快速进行数据交流的标准，这就是MPI。 mpi 只是一个网络传输接口，和 tensorflow, mxnet, spark 都不是一个层面的技术。换句话说，mpi 的对比对象应该是 zmq 或者底层">
+<meta name="keywords" content="survey">
 <meta property="og:type" content="article">
-<meta property="og:title" content="One2Zero">
-<meta property="og:url" content="http://whosuz.gtihub.io/2020/04/17/MPI/index.html">
+<meta property="og:title" content="MPI 现状分析总结">
+<meta property="og:url" content="http://whosuz.gtihub.io/2020/05/08/MPI/index.html">
 <meta property="og:site_name" content="One2Zero">
-<meta property="og:description" content="##MPI 在程序中，不同的进程需要相互的数据交换，特别是在科学计算中，需要大规模的计算与数据交换，集群可以很好解决单节点计算力不足的问题，但在集群中大规模的数据交换是很耗费时间的，因此需要一种在多节点的情况下能快速进行数据交流的标准，这就是MPI。 mpi 只是一个网络传输接口，和 tensorflow, mxnet, spark 都不是一个层面的技术。换句话说，mpi 的对比对象应该是 zmq">
+<meta property="og:description" content="在程序中，不同的进程需要相互的数据交换，特别是在科学计算中，需要大规模的计算与数据交换，集群可以很好解决单节点计算力不足的问题，但在集群中大规模的数据交换是很耗费时间的，因此需要一种在多节点的情况下能快速进行数据交流的标准，这就是MPI。 mpi 只是一个网络传输接口，和 tensorflow, mxnet, spark 都不是一个层面的技术。换句话说，mpi 的对比对象应该是 zmq 或者底层">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-17T06:58:59.341Z">
+<meta property="og:updated_time" content="2020-06-09T08:31:27.160Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="One2Zero">
-<meta name="twitter:description" content="##MPI 在程序中，不同的进程需要相互的数据交换，特别是在科学计算中，需要大规模的计算与数据交换，集群可以很好解决单节点计算力不足的问题，但在集群中大规模的数据交换是很耗费时间的，因此需要一种在多节点的情况下能快速进行数据交流的标准，这就是MPI。 mpi 只是一个网络传输接口，和 tensorflow, mxnet, spark 都不是一个层面的技术。换句话说，mpi 的对比对象应该是 zmq">
+<meta name="twitter:title" content="MPI 现状分析总结">
+<meta name="twitter:description" content="在程序中，不同的进程需要相互的数据交换，特别是在科学计算中，需要大规模的计算与数据交换，集群可以很好解决单节点计算力不足的问题，但在集群中大规模的数据交换是很耗费时间的，因此需要一种在多节点的情况下能快速进行数据交流的标准，这就是MPI。 mpi 只是一个网络传输接口，和 tensorflow, mxnet, spark 都不是一个层面的技术。换句话说，mpi 的对比对象应该是 zmq 或者底层">
 
 
 
@@ -98,9 +98,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://whosuz.gtihub.io/2020/04/17/MPI/">
+  <link rel="canonical" href="http://whosuz.gtihub.io/2020/05/08/MPI/">
 
 
 
 
 
-  <title> | One2Zero</title>
+  <title>MPI 现状分析总结 | One2Zero</title>
   
 
 
@@ -161,7 +161,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Python Java Mysql MechineLearning......</p>
+        <p class="site-subtitle">The greatest discovery of our generation is that human beings can alter their lives by altering their attitudes of mind.</p>
       
   </div>
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://whosuz.gtihub.io/2020/04/17/MPI/">
+    <link itemprop="mainEntityOfPage" href="http://whosuz.gtihub.io/2020/05/08/MPI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tinker">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">MPI 现状分析总结</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-17T14:58:59+08:00">
-                2020-04-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-08T00:00:00+08:00">
+                2020-05-08
               </time>
             
 
@@ -300,13 +300,12 @@
       
 
       
-        <p>##MPI</p>
-<p>在程序中，不同的进程需要相互的数据交换，特别是在科学计算中，需要大规模的计算与数据交换，集群可以很好解决单节点计算力不足的问题，但在集群中大规模的数据交换是很耗费时间的，因此需要一种在多节点的情况下能快速进行数据交流的标准，这就是MPI。</p>
+        <p>在程序中，不同的进程需要相互的数据交换，特别是在科学计算中，需要大规模的计算与数据交换，集群可以很好解决单节点计算力不足的问题，但在集群中大规模的数据交换是很耗费时间的，因此需要一种在多节点的情况下能快速进行数据交流的标准，这就是MPI。</p>
 <p>mpi 只是一个网络传输接口，和 tensorflow, mxnet, spark 都不是一个层面的技术。换句话说，mpi 的对比对象应该是 zmq 或者底层 socket 这样的网络接口。我们可以使用类似于 mpi 或者 zmq 这样的接口去实现这些系统。</p>
 <p>MPI定义的是接口，具体用的时候我们是用某个特定的实现，例如openmpi或者mpich2. 为了简单，这里统一叫MPI。</p>
 <p><strong>现状：</strong>MPI在高性能计算界(特别是成熟的科学计算软件中)几乎是标配，其对高性能通信(特别是rdma)优化较好。</p>
 <p>在DNN 上用处不大，至少目前来看还没有用起来，原因在于大部分的<strong>neural network</strong> 的参数没那么多，所以<strong>矩阵</strong>也就没那么大，而目前结果表明batch size提高对training速度提高不大，batch size 上不去那么每次迭代的计算量也没有那么高。综上最合适的架构是4路titan，就这样也没把flops用满。除非网络结构或者training的形式大变，否则MPI暂时用不上的。（纯cpu解决方案也许需要）<br>如果是广义的机器学习，那MPI太有用了。<strong>只要涉及大矩阵运算的还没有什么能超过MPI的</strong>。spark之类的差的太远。</p>
-<h3 id="优劣对比"><a href="#优劣对比" class="headerlink" title="优劣对比"></a>优劣对比</h3><ol>
+<h3><span id="you-lie-dui-bi">优劣对比</span><a href="#you-lie-dui-bi" class="header-anchor">#</a></h3><ol>
 <li><p>特定于机器学习任务，mpi 最大的优势有两点。一是 mpi 有一个高性能 allreduce 的实现，底层实现了 tree aggregation. 二是程序可以无缝移植到异构高性能计算环境，例如 infiniband.</p>
 </li>
 <li><p>MPI的一大优势是支持各种网络硬件，例如infiniband和Intel Omni Path，或者网络拓扑结构，例如cray的dragonfly。通常MPI会做各种针对性的优化从而得到不错的性能。这个优势主要体现在超算上。而对于云，通常使用常见的网络硬件（例如Ethernet）和连接结构（multi-rooted tree），MPI做的优化通常不会有太大效果。</p>
@@ -327,7 +326,7 @@
 <li><p>但是如果一个系统自己实现fault recovery，那还需要MPI做什么呢？做通信？——现代后台系统都用基于HTTP的RPC机制通信了，比如和Google的Stubby、Facebook的Thrift、腾讯的Poppy还有Go语言自带的rpc package。做进程管理？——在开源界没有分布式操作系统的那些年里有价值；可是今天（2013年），Google的Borg、AMPLab的Mesos和Yahoo!的YARN都比MPICH2做得更好，考虑更全面，效能更高。</p>
 </li>
 </ol>
-<h3 id="结论和建议"><a href="#结论和建议" class="headerlink" title="结论和建议"></a>结论和建议</h3><ol>
+<h3><span id="jie-lun-he-jian-yi">结论和建议</span><a href="#jie-lun-he-jian-yi" class="header-anchor">#</a></h3><ol>
 <li>如果要在云上跑机器学习的话，MPI前景不大。但如果是使用Top500类似的超算，MPI是不错的选择。</li>
 <li>MPI是分布式领域里的汇编语言，Hadoop是分布式领域里的C语言，Spark是分布式领域里的Java语言。从接口的易用性上，MPI &lt; Hadoop &lt; Spark；从控制的精细程度上，当然是MPI &gt; Hadoop = Spark；性能方面，一个编写良好的的MPI程序肯定是比Hadoop和Spark快的，但是代码量巨大，非常繁琐。</li>
 </ol>
@@ -346,6 +345,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/survey/" rel="tag"># survey</a>
+          
+        </div>
+      
 
       
       
@@ -355,8 +360,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/29/2019-05-29-怎样学习才高效/" rel="next" title="怎样学习才高效">
-                <i class="fa fa-chevron-left"></i> 怎样学习才高效
+              <a href="/2020/05/08/脊柱侧弯/" rel="next" title="图像处理-脊柱侧弯检测任务">
+                <i class="fa fa-chevron-left"></i> 图像处理-脊柱侧弯检测任务
               </a>
             
           </div>
@@ -364,10 +369,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/12/脊柱侧弯/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -434,7 +435,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Tinker</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">As you think, so shall you be.</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -457,7 +458,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -490,7 +491,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#优劣对比"><span class="nav-number">1.</span> <span class="nav-text">优劣对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论和建议"><span class="nav-number">2.</span> <span class="nav-text">结论和建议</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">优劣对比#</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">结论和建议#</span></a></li></ol></div>
             
 
           </div>
@@ -528,7 +529,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
